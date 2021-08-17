@@ -70,5 +70,24 @@ public class SpartanTestsWithParameters {
         //verify Not Found in the json payload/body
         assertTrue(response.body().asString().contains("Not Found"));
     }
+    @DisplayName("GET request to /api/spartans/search with Query Params")
+    @Test
+    public void test3() {
+        Response response = given().log().all().
+                accept(ContentType.JSON)
+                .and().queryParam("nameContains", "e")
+                .and().queryParam("gender", "Female")
+                .when()
+                .get("/api/spartans/search");
 
-}
+        //verify status code 200
+        assertEquals(200, response.statusCode());
+        //verify content type
+        assertEquals("application/json", response.contentType());
+        //"Female" should be in response payload
+        assertTrue(response.body().asString().contains("Female"));
+        //"Janette" should be in response payload
+        assertTrue(response.body().asString().contains("Janette"));
+    }
+
+    }
