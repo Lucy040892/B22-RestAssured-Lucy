@@ -12,7 +12,7 @@ import static org.junit.jupiter.api.Assertions.*;
 public class ORDSApiTestsWithParameters {
 
     @BeforeAll
-    public static void init(){
+    public static void init() {
         //save baseurl inside this variable so that we dont need to type each http method.
         baseURI = "http://35.175.124.71:1000/ords/hr";
     }
@@ -28,19 +28,39 @@ public class ORDSApiTestsWithParameters {
 
     @DisplayName("GET request to /countries with Query Param")
     @Test
-    public void test1(){
-        Response response= given().accept(ContentType.JSON)
-                .and().queryParam("q","{\"region_id\":2}")
+    public void test1() {
+        Response response = given().accept(ContentType.JSON)
+                .and().queryParam("q", "{\"region_id\":2}")
                 .log().all()
                 .when()
                 .get("/countries");
 
-        assertEquals(200,response.statusCode());
-        assertEquals("application/json",response.header("Content-Type"));
+        assertEquals(200, response.statusCode());
+        assertEquals("application/json", response.header("Content-Type"));
         assertTrue(response.body().asString().contains("United States of America"));
 
         response.prettyPrint();
-
     }
+
+        /*
+        Send a GET request to employees and get only employees who works as a IT_PROG
+
+     */
+        @DisplayName("GET request to /employees with Query Param")
+        @Test
+        public void test12() {
+            Response response = given().accept(ContentType.JSON)
+                    .and().queryParam("q", "{\"job_id\": \"IT_PROG\"}")
+                    .log().all()
+                    .when()
+                    .get("/employees");
+
+            assertEquals(200, response.statusCode());
+            assertEquals("application/json", response.header("Content-Type"));
+            assertTrue(response.body().asString().contains("IT_PROG"));
+
+
+            response.prettyPrint();
+        }
 
 }
