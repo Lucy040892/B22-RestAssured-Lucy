@@ -33,6 +33,10 @@ public class ORDSApisWithJsonPath extends HrTestBase {
         List<String> allCountryIds = jsonPath.getList("items.country_id");
         System.out.println(allCountryIds);
 
+        //get all country names where their region id is equal to 2
+        List<String> countryNameWithRegionId2 = jsonPath.getList("items.findAll {it.region_id==2}.country_name");
+        System.out.println(countryNameWithRegionId2);
+
 
     }
 }
