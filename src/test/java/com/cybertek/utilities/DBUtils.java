@@ -11,6 +11,19 @@ public class DBUtils {
     private static Statement statement;
     private static ResultSet resultSet;
 
+    public static void createConnection() {
+        String dbUrl = "jdbc:oracle:thin:@3.80.189.73:1521:xe";
+        String dbUsername = "hr";
+        String dbPassword = "hr";
+        try {
+            connection = DriverManager.getConnection(dbUrl, dbUsername, dbPassword);
+        } catch (SQLException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+    }
+
+
     public static void createConnection(String dbUrl, String dbUsername, String dbPassword) {
 
         try {
