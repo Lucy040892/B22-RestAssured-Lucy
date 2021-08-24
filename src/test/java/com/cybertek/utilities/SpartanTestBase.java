@@ -12,5 +12,7 @@ public class SpartanTestBase {
         String dbUrl = "jdbc:oracle:thin:@35.175.124.71:1521:xe";
         String dbUsername = "SP";
         String dbPassword = "SP";
+
+        DBUtils.createConnection(dbUrl, dbUsername, dbPassword);
     }
 }
