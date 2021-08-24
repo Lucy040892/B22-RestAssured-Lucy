@@ -3,7 +3,6 @@ package com.cybertek.day6;
 import com.cybertek.pojo.Link;
 import com.cybertek.pojo.Region;
 import com.cybertek.utilities.HrTestBase;
-import com.cybertek.utilities.HrTestBase;
 import io.restassured.path.json.JsonPath;
 import org.junit.jupiter.api.Test;
 
@@ -23,7 +22,7 @@ public class ORDSPojoGetRequestTest extends HrTestBase {
 
         System.out.println(region1);
 
-        System.out.println("region1.getRegion_id() = " + region1.getRegion_id());
+        System.out.println("region1.getRegion_id() = " + region1.getRId());
         System.out.println("region1.getRegion_name() = " + region1.getRegion_name());
         System.out.println("region1.getLinks().get(0).getHref() = " + region1.getLinks().get(0).getHref());
 
