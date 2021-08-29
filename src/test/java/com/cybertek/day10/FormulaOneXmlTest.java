@@ -37,6 +37,7 @@ public class FormulaOneXmlTest {
         System.out.println("familyName = " + familyName);
         //if you are trying to get attribute we use @ sign
         //get driverId
+        //in order to get attribute we use @ sign
         String driverId = xmlPath.getString("MRData.DriverTable.Driver.@driverId");
         System.out.println("driverId = " + driverId);
 
